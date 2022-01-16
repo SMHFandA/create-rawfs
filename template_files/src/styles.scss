@@ -1,0 +1,44 @@
+html,
+body,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 10px;
+  max-width: 900px;
+  min-width: 500px;
+  display: flex;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+
+  .menu {
+    max-width: 200px;
+    min-width: 200px;
+    border-right: 1px solid black;
+
+    li {
+      margin: 5px 0;
+
+      a {
+        text-decoration: none;
+
+        &.active {
+          color: red;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .content {
+    padding-left: 10px;
+  }
+}
