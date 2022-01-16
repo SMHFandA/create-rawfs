@@ -24,6 +24,11 @@
   ],
   "author": "Yura Chuchola",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:SMHFandA/create-rawfs.git"
+  },
+  "homepage": "https://github.com:SMHFandA/create-rawfs.git#readme",
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^17.0.8"
