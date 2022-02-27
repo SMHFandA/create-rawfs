@@ -4,11 +4,7 @@
   "description": "Create react SPA with typescript and faker local server.",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node ./server/server.ts",
-    "build": "tsc",
-    "prego": "npm run build",
-    "go": "node ./lib/test.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node ./server/server.ts"
   },
   "keywords": [
     "react",
