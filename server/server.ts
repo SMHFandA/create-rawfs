@@ -34,5 +34,5 @@ app.use('/api', usersRouter);
 
 app.listen(3000, function () {
   /* eslint-disable no-console */
-  console.log('Example app listening on port 3000!\n');
+  console.log('App listening on port 3000!\n');
 });

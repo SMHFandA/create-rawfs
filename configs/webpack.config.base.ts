@@ -2,7 +2,10 @@ import path from 'path';
 import webpack, { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-import { SRC_DIR, DIST_DIR } from './constants';
+import {
+  SRC_DIR,
+  DIST_DIR,
+} from './constants';
 
 const config: Configuration = {
   entry: path.join(SRC_DIR, 'index.tsx'),

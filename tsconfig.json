@@ -1,17 +1,31 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "module": "commonjs",
-      "declaration": true,
-      "outDir": "./lib",
-      "strict": true,
-      "esModuleInterop": true
-    },
-    "include": [
-        "bin"
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
     ],
-    "exclude": [
-        "node_modules",
-        "**/__tests__/*"
-    ]
-  }
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "app/*": ["src/app/*"],
+      "features/*": ["src/features/*"]
+    }
+  },
+  "include": [
+    "./src"
+  ]
+}

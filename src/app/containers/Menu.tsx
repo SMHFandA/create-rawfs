@@ -1,22 +1,26 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Link } from 'react-router-dom';
+import {
+  Link,
+  useLocation,
+} from 'react-router-dom';
 
 
 interface Props {
-  pathname: string;
 }
 
 export default function Navbar(props: Props): React.ReactElement {
+  const pathname = useLocation().pathname;
+
   return (
     <div className='menu'>
       <ul>
         <li>
           <Link
             to='/'
-            className={classnames({ active: props.pathname === '/' })}
+            className={classnames({ active: pathname === '/' })}
           >
-            Main page
+            Home page
           </Link>
         </li>
       </ul>

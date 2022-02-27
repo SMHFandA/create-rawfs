@@ -1,33 +1,31 @@
 import * as React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
-  Redirect,
-  useLocation,
+  Navigate,
 } from 'react-router-dom';
 
-import Menu from 'app/components/Menu';
+import Menu from 'app/containers/Menu';
+import HomePageCtn from 'features/homePage/containers/HomePageCtn';
 
 export default function App(): React.ReactElement {
-  const location = useLocation();
-
   return (
     <Router>
       <div className='container'>
-        <Menu
-          pathname={location.pathname}
-        />
+        <Menu />
         <div className='content'>
-          <Switch>
+          <Routes>
             <Route
-              exact
               path='/'
-              component={CounterScreen}
+              element={<HomePageCtn />}
             />
 
-            <Redirect to='/' />
-          </Switch>
+            <Route
+              path='*'
+              element={<Navigate to='/' />}
+            />
+          </Routes>
         </div>
       </div>
     </Router>
