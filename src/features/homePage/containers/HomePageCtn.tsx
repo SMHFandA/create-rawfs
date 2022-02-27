@@ -3,7 +3,7 @@ import React from 'react';
 interface Props {
 }
 
-const HomePageCtn = (props: Props) => {
+const HomePageCtn = (props: Props): React.ReactElement => {
   return (
     <div>
       Home page
