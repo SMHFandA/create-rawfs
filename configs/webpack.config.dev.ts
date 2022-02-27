@@ -11,13 +11,8 @@ const config = merge<WebpackConfiguration & WebpackDevServerConfiguration>(baseC
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-hot-middleware/client',
     baseConfig.entry as string,
   ],
-  devServer: {
-    port: 8080,
-    historyApiFallback: true,
-  },
   plugins: [
     new DotenvWebpack({
       path: path.join(ENVS_DIR, '.env.dev'),

@@ -1,36 +1,31 @@
+import path from 'path';
 import express from 'express';
-import webpack, { Compiler } from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import cookieParser from 'cookie-parser';
 
-import config from '../configs/webpack.config.dev';
+import { DIST_DIR } from '../configs/constants';
 import usersRouter from './routes/users';
+import cookiesRouter  from './routes/cookies';
 
 const app = express();
-const compiler: Compiler = webpack(config as unknown);
-const hotMiddleware = webpackHotMiddleware(compiler);
 
 app.use(express.json());
+app.use(cookieParser('secret key'));
+app.use(express.static(DIST_DIR));
 
 app.use((req, res, next) => {
-  if (!/(\.(?!html)\w+$|__webpack.*|\/api\/*)/.test(req.url)) {
-    req.url = '/';
+  if (!/(\.(?!html)\w+$|__webpack.*|\/api\/*|\/pages\/*)/.test(req.url)) {
+    res.sendFile(path.join(DIST_DIR, 'index.html'));
+    return ;
   }
   next();
 });
 
-app.use(
-  webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath as string,
-  })
-);
-app.use(hotMiddleware);
-
-app.use('*', (req, res, next) => {
-  setTimeout(() => next(), 2000);
-})
+// app.use('*', (req, res, next) => {
+//   setTimeout(() => next(), 2000);
+// })
 
 app.use('/api', usersRouter);
+app.use('/pages', cookiesRouter);
 
 app.listen(3000, function () {
   /* eslint-disable no-console */

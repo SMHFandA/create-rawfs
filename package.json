@@ -4,7 +4,9 @@
   "description": "Create react SPA with typescript and faker local server.",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node ./server/server.ts"
+    "start:front": "webpack --config ./configs/webpack.config.dev.ts --watch",
+    "start:server": "nodemon --watch server ./server/server.ts",
+    "start": "concurrently \"npm run start:front\" \"npm run start:server\""
   },
   "keywords": [
     "react",
@@ -44,6 +46,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "node-sass": "^7.0.1",
+    "nodemon": "^2.0.15",
     "prisma": "^3.10.0",
     "react-router-dom": "^6.2.1",
     "sass-loader": "^12.6.0",
@@ -61,6 +64,8 @@
     "@prisma/client": "^3.10.0",
     "@reduxjs/toolkit": "^1.7.2",
     "classnames": "^2.3.1",
+    "concurrently": "^7.0.0",
+    "cookie-parser": "^1.4.6",
     "dotenv-webpack": "^7.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
