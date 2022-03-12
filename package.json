@@ -2,7 +2,6 @@
   "name": "create-rawfs",
   "version": "1.0.0",
   "description": "Create react SPA with typescript and faker local server.",
-  "main": "index.js",
   "scripts": {
     "start:front": "webpack --config ./configs/webpack.config.dev.ts --watch",
     "start:server": "nodemon --watch server ./server/server.ts",
@@ -65,7 +64,6 @@
     "@reduxjs/toolkit": "^1.7.2",
     "classnames": "^2.3.1",
     "concurrently": "^7.0.0",
-    "cookie-parser": "^1.4.6",
     "dotenv-webpack": "^7.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

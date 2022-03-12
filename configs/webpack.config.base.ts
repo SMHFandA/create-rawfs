@@ -48,7 +48,13 @@ const config: Configuration = {
       template: path.join(SRC_DIR, 'index.html'),
       filename: 'index.html',
     }),
-    new webpack.ProgressPlugin(),
+    new webpack.ProgressPlugin((percentage, message) => {
+      // An idea to show the line only if percentage is divisible by 5.
+      if (percentage * 100 % 5 === 0) {
+        /* eslint-disable no-console */
+        console.log(`Webpack: ${(percentage * 100).toFixed()}% ${message}`);
+      }
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
