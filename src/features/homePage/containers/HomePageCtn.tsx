@@ -1,12 +1,25 @@
 import React from 'react';
 
+import Button from 'app/components/Button/Button';
+
 interface Props {
 }
 
-const HomePageCtn = (props: Props): React.ReactElement => {
+const HomePageCtn = (_props: Props): React.ReactElement => {
+  const handleClick = (): void => {
+    alert('Clicked button');
+  };
+
   return (
     <div>
-      Home page
+      <p>Home page</p>
+      <div>
+        <Button
+          onClick={handleClick}
+        >
+          Click me
+        </Button>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,10 @@ import webpack, { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 import {
+  CSSLoader,
+  CSSModuleLoader,
+} from './loaders';
+import {
   SRC_DIR,
   DIST_DIR,
 } from './constants';
@@ -30,10 +34,19 @@ const config: Configuration = {
         use: 'ts-loader',
       },
       {
-        test: /\.(c|sc|sa)ss$/,
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /\.module\.(sa|sc|c)ss$/,
         use: [
           'style-loader',
-          'css-loader',
+          CSSLoader,
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.module\.(sa|sc|c)ss$/,
+        use: [
+          'style-loader',
+          CSSModuleLoader,
           'sass-loader',
         ],
       },
