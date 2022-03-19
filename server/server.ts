@@ -2,6 +2,7 @@ import path from 'path';
 import express from 'express';
 
 import { DIST_DIR } from '../configs/constants';
+import sequelize from './util/database';
 import usersRouter from './routes/users';
 
 const app = express();
@@ -24,7 +25,16 @@ app.use((req, res, next) => {
 
 app.use('/api', usersRouter);
 
-app.listen(3000, function () {
-  /* eslint-disable no-console */
-  console.log('App listening on port 3000!\n');
-});
+(async (): Promise<void> => {
+  try {
+    await sequelize.sync({ force: false});
+    app.listen(3000, function () {
+      /* eslint-disable no-console */
+      console.log('App listening on port 3000!\n');
+    });
+    /* eslint-disable no-console */
+  } catch (error) {
+    /* eslint-disable no-console */
+    console.log(error);
+  }
+})();

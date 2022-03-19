@@ -5,7 +5,10 @@
   "scripts": {
     "start:front": "webpack --config ./configs/webpack.config.dev.ts --watch",
     "start:server": "nodemon --watch server ./server/server.ts",
-    "start": "concurrently \"npm run start:front\" \"npm run start:server\""
+    "start": "concurrently \"npm run start:front\" \"npm run start:server\"",
+    "docker:dev:up": "docker-compose -f ./docker-compose.dev.yml up",
+    "docker:dev:down": "docker-compose -f ./docker-compose.dev.yml down",
+    "sequelize-cli": "sequelize-cli"
   },
   "keywords": [
     "react",
@@ -27,10 +30,12 @@
     "@types/faker": "^6.6.9",
     "@types/lodash": "^4.14.179",
     "@types/node": "^17.0.21",
+    "@types/pg": "^8.6.5",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-redux": "^7.1.22",
     "@types/react-router-dom": "^5.3.3",
+    "@types/sequelize": "^4.28.11",
     "@types/webpack-dev-middleware": "^5.3.0",
     "@types/webpack-dev-server": "^4.7.2",
     "@types/webpack-hot-middleware": "^2.25.6",
@@ -46,9 +51,9 @@
     "html-webpack-plugin": "^5.5.0",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.15",
-    "prisma": "^3.10.0",
     "react-router-dom": "^6.2.1",
     "sass-loader": "^12.6.0",
+    "sequelize-cli": "^6.4.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
@@ -60,14 +65,16 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@prisma/client": "^3.10.0",
     "@reduxjs/toolkit": "^1.7.2",
     "classnames": "^2.3.1",
     "concurrently": "^7.0.0",
     "dotenv-webpack": "^7.1.0",
+    "lodash": "^4.17.21",
+    "pg": "^8.7.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
+    "sequelize": "^6.17.0",
     "typescript": "^4.5.5"
   }
 }
