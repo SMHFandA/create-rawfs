@@ -6,7 +6,8 @@
   },
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended",
@@ -43,6 +44,7 @@
     "no-constant-condition": ["error", { "checkLoops": false }],
     "@typescript-eslint/explicit-function-return-type": ["error"],
     "@typescript-eslint/no-empty-interface": 0,
-    "@typescript-eslint/quotes": ["error", "single"]
+    "@typescript-eslint/quotes": ["error", "single"],
+    "@typescript-eslint/no-var-requires": 0
   }
 }
