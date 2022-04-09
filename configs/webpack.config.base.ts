@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack, { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import DotenvWebpack from 'dotenv-webpack';
 
 import {
   CSSLoader,
@@ -9,6 +10,7 @@ import {
 import {
   SRC_DIR,
   DIST_DIR,
+  ROOT_DIR,
 } from './constants';
 
 const config: Configuration = {
@@ -57,6 +59,9 @@ const config: Configuration = {
     ],
   },
   plugins: [
+    new DotenvWebpack({
+      path: path.join(ROOT_DIR, '.env'),
+    }),
     new HtmlWebpackPlugin({
       template: path.join(SRC_DIR, 'index.html'),
       filename: 'index.html',

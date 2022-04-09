@@ -2,7 +2,6 @@ import path from 'path';
 import express from 'express';
 
 import { DIST_DIR } from '../configs/constants';
-import sequelize from './util/database';
 import usersRouter from './routes/users';
 
 const app = express();
@@ -18,23 +17,16 @@ app.use((req, res, next) => {
   next();
 });
 
-// request delay.
+/**
+ * request delay
+ */
 // app.use('*', (req, res, next) => {
 //   setTimeout(() => next(), 2000);
 // });
 
 app.use('/api', usersRouter);
 
-(async (): Promise<void> => {
-  try {
-    await sequelize.sync({ force: false});
-    app.listen(3000, function () {
-      /* eslint-disable no-console */
-      console.log('App listening on port 3000!\n');
-    });
-    /* eslint-disable no-console */
-  } catch (error) {
-    /* eslint-disable no-console */
-    console.log(error);
-  }
-})();
+app.listen(3000, function () {
+  /* eslint-disable no-console */
+  console.log('App listening on port 3000!\n');
+});

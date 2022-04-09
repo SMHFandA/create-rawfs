@@ -1,34 +1,28 @@
 version: '3'
 
 services:
-  db:
-    container_name: create_rawfs_db
+  postgres:
     image: 'postgres:12'
     ports:
       - '5432:5432'
     environment:
-      - POSTGRES_USER=create_rawfs_user
-      - POSTGRES_PASSWORD=create_rawfs_pass
-      - POSTGRES_DB=create_rawfs_database
+      POSTGRES_USER: '${POSTGRES_USER}'
+      POSTGRES_PASSWORD: '${POSTGRES_PASSWORD}'
+      POSTGRES_DB: '${POSTGRES_DB}'
     volumes:
-      - create_rawfs_data:/var/lib/postgresql/data
+      - /var/lib/data/:/var/lib/postgresql/data/
   app:
     container_name: create_rawfs
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - db
+      - postgres
     volumes:
       - '.:/app'
       - '/app/node_modules'
     ports:
-      - 3000:3000
-    environment:
-      - PGUSER=create_rawfs_user
-      - PGPASSWORD=create_rawfs_pass
-      - PGDATABASE=create_rawfs_database
-      - PGHOST=create_rawfs_db
+      - '3000:3000'
 volumes:
   create_rawfs_data: {}
 
