@@ -6,11 +6,11 @@
     "prisma": "prisma",
     "start:front": "webpack --config ./configs/webpack.config.dev.ts --watch",
     "start:server": "nodemon --watch server ./server/server.ts",
-    "prestart": "prisma generate",
+    "prestart": "npm run docker:db:up && prisma generate",
     "start": "concurrently \"npm run start:front\" \"npm run start:server\"",
-    "docker:dev:up": "docker-compose -f docker-compose.dev.yml up",
-    "docker:dev:down": "docker-compose -f docker-compose.dev.yml down",
-    "docker:dev:build": "docker-compose -f docker-compose.dev.yml build"
+    "docker:db:up": "docker-compose -f docker-compose.db.yml up -d",
+    "docker:db:down": "docker-compose -f docker-compose.db.yml down",
+    "docker:db:build": "docker-compose -f docker-compose.db.yml build"
   },
   "keywords": [
     "react",
@@ -42,6 +42,7 @@
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "css-loader": "^6.6.0",
+    "dotenv-checker": "^1.1.5",
     "eslint": "^8.10.0",
     "eslint-plugin-react": "^7.29.2",
     "express": "^4.17.3",

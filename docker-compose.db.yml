@@ -11,18 +11,5 @@ services:
       POSTGRES_DB: '${POSTGRES_DB}'
     volumes:
       - /var/lib/data/:/var/lib/postgresql/data/
-  app:
-    container_name: create_rawfs
-    build:
-      context: .
-      dockerfile: Dockerfile
-    depends_on:
-      - postgres
-    volumes:
-      - '.:/app'
-      - '/app/node_modules'
-    ports:
-      - '3000:3000'
 volumes:
   create_rawfs_data: {}
-

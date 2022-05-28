@@ -3,7 +3,11 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-async function main(): Promise<void> {
+async function deleteData(): Promise<any> {
+  await prisma.user.deleteMany({});
+}
+
+async function createUsers(): Promise<void> {
   Array.from({ length: 5 }).map(async () => {
     await prisma.user.create({
       data: {
@@ -17,6 +21,12 @@ async function main(): Promise<void> {
       },
     });
   });
+}
+
+async function main(): Promise<void> {
+  await deleteData();
+
+  await createUsers();
 }
 
 main()
