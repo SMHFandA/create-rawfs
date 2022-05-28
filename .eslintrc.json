@@ -37,7 +37,8 @@
     }],
     "quotes": ["error", "single"],
     "jsx-quotes": ["error", "prefer-single"],
-    "no-unused-vars": ["error", {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error", {
       "varsIgnorePattern": "^_",
       "argsIgnorePattern": "^_"
     }],

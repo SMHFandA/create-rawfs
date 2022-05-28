@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
-import './styles.scss';
+import 'bulma';
 
 if (module['hot']) {
   module['hot'].accept();

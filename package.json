@@ -64,6 +64,7 @@
   "dependencies": {
     "@prisma/client": "^3.11.1",
     "@reduxjs/toolkit": "^1.7.2",
+    "bulma": "^0.9.4",
     "classnames": "^2.3.1",
     "concurrently": "^7.0.0",
     "dotenv-webpack": "^7.1.0",
