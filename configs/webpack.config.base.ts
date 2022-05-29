@@ -24,6 +24,7 @@ const config: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
+      src: SRC_DIR,
       app: path.join(SRC_DIR, 'app'),
       features: path.join(SRC_DIR, 'features'),
     },

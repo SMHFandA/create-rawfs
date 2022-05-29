@@ -1,4 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+
+import { RootState } from 'src/appStore';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from 'src/appHooks';
+import {
+  // selectors
+  selectEmailField,
+  selectPasswordField,
+  selectIsSubmitDisabled,
+  // creators
+  emailFieldChange,
+  openFormFields,
+  closeFormFields,
+  passwordFieldChange,
+  signUpSubmit,
+} from 'features/signUpPage/containers/SignUpPage.duck';
 
 import Page from 'app/components/Page';
 import Navbar from 'app/containers/Navbar';
@@ -9,15 +27,29 @@ interface Props {
 }
 
 const SignUpPage = (_props: Props): React.ReactElement => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const dispatch = useAppDispatch();
+  const emailField = useAppSelector((state: RootState) => selectEmailField(state));
+  const passwordField = useAppSelector((state: RootState) => selectPasswordField(state));
+  const isSubmitDisabled = useAppSelector((state: RootState) => selectIsSubmitDisabled(state));
 
-  const handleEmailChange = (value: string): void => {
-    setEmail(value);
+  useEffect(() => {
+    dispatch(openFormFields());
+  }, []);
+
+  useEffect(() => {
+    return () => dispatch(closeFormFields());
+  }, []);
+
+  const handleEmailFieldChange = (value: string): void => {
+    dispatch(emailFieldChange(value));
   };
 
-  const handlePasswordChange = (value: string): void => {
-    setPassword(value);
+  const handlePasswordFieldChange = (value: string): void => {
+    dispatch(passwordFieldChange(value));
+  };
+
+  const handleSignUpSubmit = (): void => {
+    dispatch(signUpSubmit());
   };
 
   return (
@@ -30,10 +62,14 @@ const SignUpPage = (_props: Props): React.ReactElement => {
           <div className='column is-4 is-offset-4'>
             <div className='is-size-4'>{'Sign up'}</div>
             <SingUpForm
-              email={email}
-              password={password}
-              onEmailChange={handleEmailChange}
-              onPasswordChange={handlePasswordChange}
+              email={emailField.value}
+              emailError={emailField.error}
+              password={passwordField.value}
+              passwordError={passwordField.error}
+              isSubmitDisabled={isSubmitDisabled}
+              onEmailChange={handleEmailFieldChange}
+              onPasswordChange={handlePasswordFieldChange}
+              onSubmit={handleSignUpSubmit}
             />
           </div>
         </div>
